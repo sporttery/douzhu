@@ -1,0 +1,42 @@
+替换名称：
+"C:\Users\hongbo-zw\Desktop\抖竹\res\values\strings.xml"(47,29):    <string name="app_name">抖音助手</string>
+AndroidManifest.xml 
+抖竹 -> 抖音助手
+
+替换LOGO:
+C:\Users\hongbo-zw\Desktop\抖竹\res\drawable
+logo.png
+splash.png
+
+替换下面文件里的IP为154.39.238.89
+"C:\Users\hongbo-zw\Desktop\抖竹\smali\com\douzhu\app\BuildConfig.smali"(17,55):.field public static final HOST:Ljava/lang/String; = "47.97.98.67"
+"C:\Users\hongbo-zw\Desktop\抖竹\smali\com\douzhu\app\base\BaseActivity$2.smali"(48,23):    const-string p1, "47.97.98.67"
+"C:\Users\hongbo-zw\Desktop\抖竹\smali\com\douzhu\app\base\BaseActivity.smali"(162,23):    const-string v1, "47.97.98.67"
+"C:\Users\hongbo-zw\Desktop\抖竹\smali\com\douzhu\app\http\ApiManager.smali"(95,23):    const-string v0, "47.97.98.67"
+"C:\Users\hongbo-zw\Desktop\抖竹\smali\com\douzhu\app\model\VideoResult.smali"(64,23):    const-string v2, "47.97.98.67"
+"C:\Users\hongbo-zw\Desktop\抖竹\smali\com\douzhu\app\ui\floating\WebsocketMonitor.smali"(1578,23):    const-string v1, "47.97.98.67"
+"C:\Users\hongbo-zw\Desktop\抖竹\assets\project\main.js"(5,25):let nodes_url = "http://47.97.98.67/";
+"C:\Users\hongbo-zw\Desktop\抖竹\assets\project\request.js"(2,22):let server = "http://47.97.98.67/";
+
+修改"C:\Users\hongbo-zw\Desktop\抖竹\smali\com\douzhu\app\websocket\DevPluginService.smali"(1539,19):
+
+第146行：invoke-static {v1}, Lcom/stardust/autojs/wangzha/util/AppUtil;->getAppCode(Landroid/content/Context;)Ljava/lang/String;
+	move-result-object v1
+添加：    const-string v1, "b0366f4efb7f4c5c"
+
+.method public sayHelloToServer()V
+1556行：sget-object v2, Landroid/os/Build;->BRAND:Ljava/lang/String; 这一行替换成  const-string v2, "Redmi"
+1565行：sget-object v2, Landroid/os/Build;->MODEL:Ljava/lang/String; 这一行替换成  const-string v2, "M2006C3LC"
+1574行：sget-object v2, Landroid/os/Build$VERSION;->RELEASE:Ljava/lang/String; 这一行替换成  const-string v2, "10"
+1586行：const-string v3, "memory" 的上一行  move-result-object v2  替换成  const-string v2, "2.3GB/3.7GB"
+
+
+
+解压
+java -jar apktool_2.6.1.jar d douzhu.apk
+封装
+java -jar apktool_2.6.1.jar b --use-aapt2 douzhu -o douzhu/dist/douzhu_unsigned.apk
+签名
+jarsigner -sigalg MD5withRSA -digestalg SHA1 -keystore douzhu/dist/my-release-key.keystore -signedjar douzhu/dist/douzhu.signed.apk douzhu/dist/douzhu_unsigned.apk my_alias
+签名密码
+密码 11111111
