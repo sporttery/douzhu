@@ -1,0 +1,26 @@
+{
+  "name": "douzhu",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sporttery/douzhu.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sporttery/douzhu/issues"
+  },
+  "homepage": "https://github.com/sporttery/douzhu#readme",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "md5-node": "^1.0.1",
+    "nconf": "^0.12.0",
+    "websocket": "^1.0.34"
+  }
+}
